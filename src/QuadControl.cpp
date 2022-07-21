@@ -104,7 +104,7 @@ V3F QuadControl::BodyRateControl(V3F pqrCmd, V3F pqr)
   MOI.y = Iyy;
   MOI.z = Izz;
 
-  momentCmd = I * kpPQR * err_pqr;
+  momentCmd = MOI * kpPQR * err_pqr;
   
   return momentCmd;
 }
@@ -209,7 +209,7 @@ V3F QuadControl::LateralPositionControl(V3F posCmd, V3F velCmd, V3F pos, V3F vel
   velCmd.z = 0;
   posCmd.z = pos.z;
 
-  V3F accelCmd, kpPos, kpVel, maxVel_cmd, maxVel_cmd;
+  V3F accelCmd, kpPos, kpVel, maxVel_cmd;
 
   kpPos.x = kpPosXY;
   kpPos.y = kpPosXY;
